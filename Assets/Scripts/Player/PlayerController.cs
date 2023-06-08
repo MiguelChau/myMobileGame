@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Core.Singleton;
+using DG.Tweening;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
     [Header("Lerp")]
     public Transform target;
@@ -15,8 +17,21 @@ public class PlayerController : MonoBehaviour
 
     public GameObject endScreen;
 
+    public bool invencible = true;
+    public Renderer playerRenderer;
+    public Material defaultMaterial;
+
     private bool _canRun;
     private Vector3 _pos;
+    private float _currentSpeed;
+    private Vector3 _startPosition;
+
+    private void Start()
+    {
+        _startPosition = transform.position;
+        ResetSpeed();
+    }
+
 
     public void Update()
     {
@@ -28,14 +43,14 @@ public class PlayerController : MonoBehaviour
 
 
         transform.position = Vector3.Lerp(transform.position, _pos, lerpSpeed * Time.deltaTime);
-        transform.Translate(transform.forward * speed * Time.deltaTime);
+        transform.Translate(transform.forward * _currentSpeed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag == tagToCheckEnemy)
         {
-            EndGame();
+            if(!invencible) EndGame();
 
         }
     }
@@ -57,5 +72,41 @@ public class PlayerController : MonoBehaviour
     public void StartToRun()
     {
         _canRun = true;
+    }
+
+    public void PowerUpSpeedUp(float f)
+    {
+        _currentSpeed = f;
+    }
+
+    public void ResetSpeed()
+    {
+        _currentSpeed = speed;
+    }
+
+    public void SetInvencible (bool a = true)
+    {
+        invencible = a;
+    }
+
+    public void ChangePlayerColor(Color color)
+    {
+        playerRenderer.material.color = color;
+    }
+
+    public void ResetPlayerColor()
+    {
+        playerRenderer.material = defaultMaterial;
+    }
+
+    public void ChangeHeight(float amount, float duration, float animationDuration, Ease ease)
+    {
+        transform.DOMoveY(_startPosition.y + amount, animationDuration).SetEase(ease);
+        Invoke(nameof(ResetHeight), duration);
+    }
+
+    public void ResetHeight()
+    {
+        transform.DOMoveY(_startPosition.y, 1f);
     }
 }
