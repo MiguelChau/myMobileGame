@@ -9,6 +9,7 @@ public class PowerUpInvencible : PowerUpBase
         base.StartPower();
         PlayerController.Instance.SetInvencible();
         PlayerController.Instance.ChangePlayerColor(Color.white);
+        PlayerController.Instance.animatorManager.Play(AnimatorManager.AnimationType.INVENCIBLE);
     }
 
     protected override void EndPower()
@@ -16,5 +17,6 @@ public class PowerUpInvencible : PowerUpBase
         base.EndPower();
         PlayerController.Instance.SetInvencible(false);
         PlayerController.Instance.ResetPlayerColor();
+        PlayerController.Instance.StartToRun();
     }
 }

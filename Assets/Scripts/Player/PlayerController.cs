@@ -21,10 +21,14 @@ public class PlayerController : Singleton<PlayerController>
     public Renderer playerRenderer;
     public Material defaultMaterial;
 
+    [Header("Animation")]
+    public AnimatorManager animatorManager;
+
     private bool _canRun;
     private Vector3 _pos;
     private float _currentSpeed;
     private Vector3 _startPosition;
+    private float _baseSpeedToAnimation = 7;
 
     private void Start()
     {
@@ -50,9 +54,17 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (collision.transform.tag == tagToCheckEnemy)
         {
-            if(!invencible) EndGame();
+            if(!invencible)
+            {
+                MoveBack();
+                EndGame(AnimatorManager.AnimationType.DEAD);
+            }
 
         }
+    }
+    private void MoveBack()
+    {
+        transform.DOMoveZ(-1f, .3f).SetRelative();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -63,15 +75,17 @@ public class PlayerController : Singleton<PlayerController>
         }
     }
 
-    private void EndGame()
+    private void EndGame(AnimatorManager.AnimationType animationType = AnimatorManager.AnimationType.IDLE)
     {
         _canRun = false;
         endScreen.SetActive(true);
+        animatorManager.Play(animationType);
     }
 
     public void StartToRun()
     {
         _canRun = true;
+        animatorManager.Play(AnimatorManager.AnimationType.RUN, _currentSpeed / _baseSpeedToAnimation);
     }
 
     public void PowerUpSpeedUp(float f)
@@ -87,6 +101,7 @@ public class PlayerController : Singleton<PlayerController>
     public void SetInvencible (bool a = true)
     {
         invencible = a;
+        
     }
 
     public void ChangePlayerColor(Color color)
@@ -103,6 +118,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         transform.DOMoveY(_startPosition.y + amount, animationDuration).SetEase(ease);
         Invoke(nameof(ResetHeight), duration);
+        
     }
 
     public void ResetHeight()
