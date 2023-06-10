@@ -29,6 +29,7 @@ public class PlayerController : Singleton<PlayerController>
     private float _currentSpeed;
     private Vector3 _startPosition;
     private float _baseSpeedToAnimation = 7;
+    private bool _isFlying;
 
     private void Start()
     {
@@ -44,6 +45,15 @@ public class PlayerController : Singleton<PlayerController>
         _pos = target.position;
         _pos.y = transform.position.y;
         _pos.z = transform.position.z;
+
+        if (transform.position.y > _startPosition.y)
+        {
+            _isFlying = true;
+        }
+        else
+        {
+            _isFlying = false;
+        }
 
 
         transform.position = Vector3.Lerp(transform.position, _pos, lerpSpeed * Time.deltaTime);
@@ -118,11 +128,17 @@ public class PlayerController : Singleton<PlayerController>
     {
         transform.DOMoveY(_startPosition.y + amount, animationDuration).SetEase(ease);
         Invoke(nameof(ResetHeight), duration);
-        
+        _isFlying = true;
     }
 
     public void ResetHeight()
     {
         transform.DOMoveY(_startPosition.y, 1f);
+        _isFlying = false;
+    }
+
+    public bool IsFlying()
+    {
+        return _isFlying;
     }
 }
