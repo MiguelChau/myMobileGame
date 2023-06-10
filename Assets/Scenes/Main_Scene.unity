@@ -1906,7 +1906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7511177054978744464, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 3}
       propertyPath: animatorSetups.Array.data[3].speed
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7511177054978744464, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 3}
       propertyPath: animatorSetups.Array.data[4].speed
@@ -2133,8 +2133,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.5354546, z: 1}
-  m_Center: {x: 0, y: 0.8228145, z: 0}
+  m_Size: {x: 0.59996676, y: 1.5354546, z: 1}
+  m_Center: {x: 0.014934495, y: 0.8228145, z: 0}
 --- !u!23 &1363467748
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2199,7 +2199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1598299768}
   lerpSpeed: 10
-  speed: 5
+  speed: 7
   tagToCheckEnemy: Enemy
   tagToCheckEndLine: EndLine
   endScreen: {fileID: 1871723841}
@@ -3483,6 +3483,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2081352683}
     m_Modifications:
+    - target: {fileID: 131496201239905761, guid: 9b4fba07742684a4e83ab44c0f558682, type: 3}
+      propertyPath: duration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 131496201239905761, guid: 9b4fba07742684a4e83ab44c0f558682, type: 3}
+      propertyPath: animationDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1703333455042196471, guid: 9b4fba07742684a4e83ab44c0f558682, type: 3}
       propertyPath: m_RootOrder
       value: 0

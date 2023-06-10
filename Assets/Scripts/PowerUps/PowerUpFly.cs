@@ -13,17 +13,13 @@ public class PowerUpFly : PowerUpBase
         base.StartPower();
         PlayerController.Instance.ChangeHeight(amountHeight, duration, animationDuration, ease);
         PlayerController.Instance.animatorManager.Play(AnimatorManager.AnimationType.JUMP);
-
-        StartCoroutine(ReturnToRunAnimation());
     }
 
-    private IEnumerator ReturnToRunAnimation()
+    protected override void EndPower()
     {
-        yield return new WaitForSeconds(animationDuration);
+        base.EndPower();
         PlayerController.Instance.StartToRun();
     }
+
+
 }
-
-        
-
-
