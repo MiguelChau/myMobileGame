@@ -46,16 +46,6 @@ public class PlayerController : Singleton<PlayerController>
         _pos.y = transform.position.y;
         _pos.z = transform.position.z;
 
-        if (transform.position.y > _startPosition.y)
-        {
-            _isFlying = true;
-        }
-        else
-        {
-            _isFlying = false;
-        }
-
-
         transform.position = Vector3.Lerp(transform.position, _pos, lerpSpeed * Time.deltaTime);
         transform.Translate(transform.forward * _currentSpeed * Time.deltaTime);
     }
@@ -129,12 +119,14 @@ public class PlayerController : Singleton<PlayerController>
         transform.DOMoveY(_startPosition.y + amount, animationDuration).SetEase(ease);
         Invoke(nameof(ResetHeight), duration);
         _isFlying = true;
+        animatorManager.PlaySetBool(AnimatorManager.AnimationType.FLY, true);
     }
 
     public void ResetHeight()
     {
         transform.DOMoveY(_startPosition.y, 1f);
         _isFlying = false;
+        animatorManager.PlaySetBool(AnimatorManager.AnimationType.FLY, false);
     }
 
     public bool IsFlying()

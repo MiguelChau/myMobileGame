@@ -13,7 +13,8 @@ public class AnimatorManager : MonoBehaviour
         RUN,
         DEAD,
         JUMP,
-        INVENCIBLE
+        INVENCIBLE,
+        FLY
     }
     public void Play(AnimationType type, float currentSpeedFactor = 1f)
     {
@@ -27,6 +28,16 @@ public class AnimatorManager : MonoBehaviour
             }
         }
     }
+
+    public void PlaySetBool(AnimationType type, bool value)
+    {
+        for(int i = 0; i < animatorSetups.Count; ++i)
+            if(animatorSetups[i].type == type)
+            {
+                animator.SetBool(animatorSetups[i].trigger, value);
+            }
+    }
+        
     public void Update()
     {
         if (Input.GetMouseButtonDown(1))
