@@ -43,20 +43,22 @@ public class LevelManager : MonoBehaviour
 
         
 
-        for(int i = 0; 1 <_currentSetup.piecesNumberStart; i++)
+        for(int i = 0; i <_currentSetup.piecesNumberStart; i++)
         {
             CreatePieces(_currentSetup.levelPiecesStart);
         } 
         
-        for(int i = 0; 1 <_currentSetup.piecesNumber; i++)
+        for(int i = 0; i <_currentSetup.piecesNumber; i++)
         {
             CreatePieces(_currentSetup.levelPieces);
         }    
         
-        for(int i = 0; 1 <_currentSetup.piecesNumberEnd; i++)
+        for(int i = 0; i <_currentSetup.piecesNumberEnd; i++)
         {
             CreatePieces(_currentSetup.levelPiecesEnd);
         }
+
+        ColorManager.Instance.ChangeColorByType(_currentSetup.artType);
 
     }
 
