@@ -10,6 +10,11 @@ public class PlayerController : Singleton<PlayerController>
     public Transform target;
     public float lerpSpeed = 1f;
 
+    [Header("Setup")]
+    public PlayerSOSetup playerSOSetup;
+
+    [Header("Animation")]
+    public AnimatorManager animatorManager;
 
     public float speed = 1f;
     public string tagToCheckEnemy = "Enemy";
@@ -18,12 +23,7 @@ public class PlayerController : Singleton<PlayerController>
     public GameObject endScreen;
 
     public bool invencible = true;
-    public Renderer playerRenderer;
-    public Material defaultMaterial;
-
-    [Header("Animation")]
-    public AnimatorManager animatorManager;
-
+   
     private bool _canRun;
     private Vector3 _pos;
     private float _currentSpeed;
@@ -35,8 +35,30 @@ public class PlayerController : Singleton<PlayerController>
     {
         _startPosition = transform.position;
         ResetSpeed();
+
+        StartCoroutine(PlayerScaleStart());
     }
 
+    IEnumerator PlayerScaleStart()
+    {
+        transform.localScale = Vector3.zero;
+
+        yield return new WaitForSeconds(playerSOSetup.scaleDuration);
+
+        float time = 0f;
+        Vector3 startScale = Vector3.zero;
+        Vector3 targetScale = Vector3.one;
+
+        while (time < playerSOSetup.scaleDuration)
+        {
+            time += Time.deltaTime;
+            float t = time / playerSOSetup.scaleDuration;
+            transform.localScale = Vector3.Lerp(startScale, targetScale, t);
+            yield return null;
+        }
+
+        transform.localScale = targetScale;
+    }
 
     public void Update()
     {
@@ -102,16 +124,6 @@ public class PlayerController : Singleton<PlayerController>
     {
         invencible = a;
         
-    }
-
-    public void ChangePlayerColor(Color color)
-    {
-        playerRenderer.material.color = color;
-    }
-
-    public void ResetPlayerColor()
-    {
-        playerRenderer.material = defaultMaterial;
     }
 
     public void ChangeHeight(float amount, float duration, float animationDuration, Ease ease)
