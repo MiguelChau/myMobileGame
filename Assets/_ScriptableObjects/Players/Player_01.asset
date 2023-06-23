@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Player_01
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  scaleDuration: 0.7
-  ease: 1
+  scaleShowDuration: 1
+  easeShow: 27

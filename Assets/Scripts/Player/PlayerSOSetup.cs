@@ -8,10 +8,17 @@ public class PlayerSOSetup : ScriptableObject
 {
     public Animator player;
 
-    [Header("Animation")]
+    [Header("Animation ShowIn")]
     
-    public float scaleDuration = .2f;
-    public Ease ease = Ease.OutBack;
+    public float scaleShowDuration = .2f;
+    public Ease easeShow = Ease.OutBack;
 
+    /*[Header("Animation Bounce")]
+    public float scaleBounceDuration = .2f;
+    public float scaleBounce = 1.2f;
+    public Ease easeBounce = Ease.OutBack;
 
+    [Header("PowerUP Scale")]
+    public float invencibleScale = 2f;
+    public float speedScale = 0.5f;*/
 }

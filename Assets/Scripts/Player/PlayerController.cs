@@ -13,8 +13,6 @@ public class PlayerController : Singleton<PlayerController>
     [Header("Setup")]
     public PlayerSOSetup playerSOSetup;
 
-    [Header("Animation")]
-    public AnimatorManager animatorManager;
 
     public float speed = 1f;
     public string tagToCheckEnemy = "Enemy";
@@ -31,6 +29,10 @@ public class PlayerController : Singleton<PlayerController>
     private float _baseSpeedToAnimation = 7;
     private bool _isFlying;
 
+    [Header("Animation")]
+    public AnimatorManager animatorManager;
+    [SerializeField] private BounceHelper _bounceHelper;
+
     private void Start()
     {
         _startPosition = transform.position;
@@ -39,20 +41,26 @@ public class PlayerController : Singleton<PlayerController>
         StartCoroutine(PlayerScaleStart());
     }
 
+    public void Bounce()
+    {
+        if(_bounceHelper !=null)
+            _bounceHelper.Bounce();
+    }
+
     IEnumerator PlayerScaleStart()
     {
         transform.localScale = Vector3.zero;
 
-        yield return new WaitForSeconds(playerSOSetup.scaleDuration);
+        yield return new WaitForSeconds(playerSOSetup.scaleShowDuration);
 
         float time = 0f;
         Vector3 startScale = Vector3.zero;
         Vector3 targetScale = Vector3.one;
 
-        while (time < playerSOSetup.scaleDuration)
+        while (time < playerSOSetup.scaleShowDuration)
         {
             time += Time.deltaTime;
-            float t = time / playerSOSetup.scaleDuration;
+            float t = time / playerSOSetup.scaleShowDuration;
             transform.localScale = Vector3.Lerp(startScale, targetScale, t);
             yield return null;
         }
@@ -70,6 +78,7 @@ public class PlayerController : Singleton<PlayerController>
 
         transform.position = Vector3.Lerp(transform.position, _pos, lerpSpeed * Time.deltaTime);
         transform.Translate(transform.forward * _currentSpeed * Time.deltaTime);
+
     }
 
     private void OnCollisionEnter(Collision collision)

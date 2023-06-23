@@ -2272,6 +2272,7 @@ GameObject:
   - component: {fileID: 1363467747}
   - component: {fileID: 1363467746}
   - component: {fileID: 1363467750}
+  - component: {fileID: 1363467751}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2389,12 +2390,28 @@ MonoBehaviour:
   target: {fileID: 1598299768}
   lerpSpeed: 10
   playerSOSetup: {fileID: 11400000, guid: 582ac0f4dcc29d74e93fb5f779cc745d, type: 2}
-  animatorManager: {fileID: 1126308699}
   speed: 7
   tagToCheckEnemy: Enemy
   tagToCheckEndLine: EndLine
   endScreen: {fileID: 1871723841}
   invencible: 0
+  animatorManager: {fileID: 1126308699}
+  _bounceHelper: {fileID: 1363467751}
+--- !u!114 &1363467751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363467743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f823663ca0cec489420688e8d709e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleDuration: 0.2
+  scaleBounce: 1.2
+  easeBounce: 27
 --- !u!1001 &1378342646
 PrefabInstance:
   m_ObjectHideFlags: 0
