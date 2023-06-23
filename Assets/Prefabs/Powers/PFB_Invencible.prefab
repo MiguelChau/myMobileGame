@@ -65,7 +65,9 @@ MonoBehaviour:
   graphicItem: {fileID: 617892376125335180}
   timeToHide: 2
   audioSource: {fileID: 0}
-  duration: 4
+  duration: 3
+  invencibleScale: 2
+  easeInvencbile: 1
 --- !u!1 &617892376125335180
 GameObject:
   m_ObjectHideFlags: 0

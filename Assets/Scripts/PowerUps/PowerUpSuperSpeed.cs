@@ -1,36 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PowerUpSuperSpeed : PowerUpBase
 {
-    //public PlayerSOSetup playerSOSetup;
+    [Header("Speed")]
     public float amountSpeed;
     public float scale = 0.5f;
-
-    /*public void StartsSOSetup(PlayerSOSetup setup)
-    {
-        playerSOSetup = setup;
-    }*/
+    public Ease easeSpeed = Ease.OutBack;
 
     protected override void StartPower()
     {
         base.StartPower();
         ScalePlayer(scale);
         PlayerController.Instance.PowerUpSpeedUp(amountSpeed);
-        PlayerController.Instance.PowerUpSpeedUp(scale);
         PlayerController.Instance.Bounce();
-
-        /*if (playerSOSetup != null)
-        {
-            PlayerController.Instance.Bounce(playerSOSetup.speedScale);
-        }*/
     }
 
     protected override void EndPower()
     {
         base.EndPower();
         PlayerController.Instance.ResetSpeed();
+        ScalePlayer(1f);
     }
 
     private void ScalePlayer(float targetScale)

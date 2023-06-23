@@ -148,5 +148,7 @@ MonoBehaviour:
   graphicItem: {fileID: 3760936750632477559}
   timeToHide: 2
   audioSource: {fileID: 0}
-  duration: 4
+  duration: 3
   amountSpeed: 30
+  scale: 0.5
+  easeSpeed: 32

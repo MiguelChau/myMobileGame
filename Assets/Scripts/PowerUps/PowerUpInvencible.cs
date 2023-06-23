@@ -1,16 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PowerUpInvencible : PowerUpBase
 {
-    //public PlayerSOSetup playerSOSetup;
-
-    /*public void StartsSOSetup(PlayerSOSetup setup)
-    {
-        playerSOSetup = setup;
-    }*/
+    [Header("Invencible")]
     public float invencibleScale = 2f;
+    public Ease easeInvencbile = Ease.OutBack;
 
     protected override void StartPower()
     {
@@ -19,13 +16,6 @@ public class PowerUpInvencible : PowerUpBase
         PlayerController.Instance.SetInvencible();
         PlayerController.Instance.animatorManager.Play(AnimatorManager.AnimationType.INVENCIBLE);
         PlayerController.Instance.Bounce();
-
-
-        /*if (playerSOSetup != null)
-        {
-            PlayerController.Instance.Bounce(playerSOSetup.invencibleScale);
-        }*/
-
     }
 
     protected override void EndPower()
@@ -33,10 +23,20 @@ public class PowerUpInvencible : PowerUpBase
         base.EndPower();
         PlayerController.Instance.SetInvencible(false);
         PlayerController.Instance.StartToRun();
+        ScalePlayer(1f);
     }
 
     private void ScalePlayer(float targetScale)
     {
         PlayerController.Instance.transform.localScale = new Vector3(targetScale, targetScale, targetScale);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            ScalePlayer(invencibleScale);
+        }
+
     }
 }
