@@ -33,6 +33,13 @@ public class PlayerController : Singleton<PlayerController>
     public AnimatorManager animatorManager;
     [SerializeField] private BounceHelper _bounceHelper;
 
+    private float targetScale;
+
+    public void SetTargetScale(float targetScale)
+    {
+        this.targetScale = targetScale;
+    }
+
     private void Start()
     {
         _startPosition = transform.position;
@@ -44,7 +51,7 @@ public class PlayerController : Singleton<PlayerController>
     public void Bounce()
     {
         if(_bounceHelper !=null)
-            _bounceHelper.Bounce();
+            _bounceHelper.Bounce(targetScale);
     }
 
     IEnumerator PlayerScaleStart()

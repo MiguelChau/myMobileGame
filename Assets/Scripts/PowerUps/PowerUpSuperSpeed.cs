@@ -16,6 +16,7 @@ public class PowerUpSuperSpeed : PowerUpBase
         ScalePlayer(scale);
         PlayerController.Instance.PowerUpSpeedUp(amountSpeed);
         PlayerController.Instance.Bounce();
+        PlayerController.Instance.SetTargetScale(scale);
     }
 
     protected override void EndPower()
@@ -23,10 +24,12 @@ public class PowerUpSuperSpeed : PowerUpBase
         base.EndPower();
         PlayerController.Instance.ResetSpeed();
         ScalePlayer(1f);
+        PlayerController.Instance.SetTargetScale(1f);
     }
 
     private void ScalePlayer(float targetScale)
     {
         PlayerController.Instance.transform.localScale = new Vector3(targetScale, targetScale, targetScale);
+        PlayerController.Instance.SetTargetScale(scale);
     }
 }
