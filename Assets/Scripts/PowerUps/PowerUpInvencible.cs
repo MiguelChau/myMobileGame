@@ -17,6 +17,7 @@ public class PowerUpInvencible : PowerUpBase
         PlayerController.Instance.animatorManager.Play(AnimatorManager.AnimationType.INVENCIBLE);
         PlayerController.Instance.Bounce();
         PlayerController.Instance.SetTargetScale(invencibleScale);
+       
     }
 
     protected override void EndPower()
