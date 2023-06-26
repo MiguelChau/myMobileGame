@@ -19,6 +19,7 @@ public class PlayerController : Singleton<PlayerController>
     public string tagToCheckEndLine = "EndLine";
 
     public GameObject endScreen;
+    public List<AudioSource> audioSourceList;
 
     public bool invencible = true;
    
@@ -106,6 +107,17 @@ public class PlayerController : Singleton<PlayerController>
                 MoveBack();
                 EndGame(AnimatorManager.AnimationType.DEAD);
                 if (vfxDeath != null) vfxDeath.Play();
+
+                if (audioSourceList != null)
+                {
+                    foreach (AudioSource audioSource in audioSourceList)
+                    {
+                        if (audioSource.clip != null)
+                        {
+                            audioSource.Play();
+                        }
+                    }
+                }
             }
 
         }
@@ -120,7 +132,18 @@ public class PlayerController : Singleton<PlayerController>
         if (other.transform.tag == tagToCheckEndLine)
         {
             EndGame();
-            
+
+            if (audioSourceList != null)
+            {
+                foreach (AudioSource audioSource in audioSourceList)
+                {
+                    if (audioSource.clip != null)
+                    {
+                        audioSource.Play();
+                    }
+                }
+            }
+
         }
     }
 

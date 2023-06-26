@@ -216,7 +216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3055603335729947955
 Transform:
   m_ObjectHideFlags: 0
@@ -567,7 +567,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: PFB_EnemyCylinder
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2611408219424055571, guid: 54c490db0c700e74ba7abb7f923cc578, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 54c490db0c700e74ba7abb7f923cc578, type: 3}
 --- !u!4 &8381479832082449723 stripped
 Transform:
@@ -629,7 +630,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: PFB_EnemyCylinder (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2611408219424055571, guid: 54c490db0c700e74ba7abb7f923cc578, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 54c490db0c700e74ba7abb7f923cc578, type: 3}
 --- !u!4 &8357699327193778547 stripped
 Transform:
@@ -691,7 +693,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: PFB_EnemyCylinder (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2611408219424055571, guid: 54c490db0c700e74ba7abb7f923cc578, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 54c490db0c700e74ba7abb7f923cc578, type: 3}
 --- !u!4 &9026906868128923185 stripped
 Transform:
