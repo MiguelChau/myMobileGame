@@ -15,7 +15,7 @@ public class LaserEnemy : MonoBehaviour
     {
         lineRenderer.positionCount = 2;
         laserCollider = GetComponent<Collider>();
-
+        StartCoroutine(LaserAnimation());
     }
     
     private IEnumerator LaserAnimation()

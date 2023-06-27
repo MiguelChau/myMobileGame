@@ -104,17 +104,22 @@ public class PlayerController : Singleton<PlayerController>
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == tagToCheckEnemy)
+        if (collision.transform.CompareTag(tagToCheckEnemy))
         {
-            if(!invencible)
+            if (!invencible)
             {
-                MoveBack();
-                EndGame(AnimatorManager.AnimationType.DEAD);
-                if (vfxDeath != null) vfxDeath.Play();
-                loseAudio.Play();
-               
+                if (collision.transform.GetComponent<LaserEnemy>() != null)
+                {
+                    EndGame(AnimatorManager.AnimationType.DEAD);
+                }
+                else
+                {
+                    MoveBack();
+                    EndGame(AnimatorManager.AnimationType.DEAD);
+                    if (vfxDeath != null) vfxDeath.Play();
+                    loseAudio.Play();
+                }
             }
-
         }
     }
     private void MoveBack()

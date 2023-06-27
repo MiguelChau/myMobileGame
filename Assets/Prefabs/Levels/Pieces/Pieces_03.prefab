@@ -380,6 +380,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PFB_EnemyLaser
       objectReference: {fileID: 0}
+    - target: {fileID: 2223535357959301052, guid: aadac2a8e3eaf5a4c8577bd29226d887, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 3667741493885477885, guid: aadac2a8e3eaf5a4c8577bd29226d887, type: 3}
       propertyPath: m_Height
       value: 22.451864
