@@ -19,7 +19,7 @@ public class PlayerController : Singleton<PlayerController>
     public string tagToCheckEndLine = "EndLine";
 
     public GameObject endScreen;
-    public List<AudioSource> audioSourceList;
+    
 
     public bool invencible = true;
    
@@ -39,6 +39,10 @@ public class PlayerController : Singleton<PlayerController>
 
     [Header("Limits")]
     public Vector2 limitVector = new Vector2(-4, 4);
+
+    [Header("Sounds")]
+    public AudioSource winAudio;
+    public AudioSource loseAudio;
 
     private float targetScale;
 
@@ -107,17 +111,8 @@ public class PlayerController : Singleton<PlayerController>
                 MoveBack();
                 EndGame(AnimatorManager.AnimationType.DEAD);
                 if (vfxDeath != null) vfxDeath.Play();
-
-                if (audioSourceList != null)
-                {
-                    foreach (AudioSource audioSource in audioSourceList)
-                    {
-                        if (audioSource.clip != null)
-                        {
-                            audioSource.Play();
-                        }
-                    }
-                }
+                loseAudio.Play();
+               
             }
 
         }
@@ -133,16 +128,7 @@ public class PlayerController : Singleton<PlayerController>
         {
             EndGame();
 
-            if (audioSourceList != null)
-            {
-                foreach (AudioSource audioSource in audioSourceList)
-                {
-                    if (audioSource.clip != null)
-                    {
-                        audioSource.Play();
-                    }
-                }
-            }
+            winAudio.Play();
 
         }
     }

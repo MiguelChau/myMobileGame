@@ -697,7 +697,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4023215848608658, guid: 55776efecb0cd134ea5f418c2f97a705, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.52
+      value: -0.054
       objectReference: {fileID: 0}
     - target: {fileID: 4023215848608658, guid: 55776efecb0cd134ea5f418c2f97a705, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1078,6 +1078,14 @@ PrefabInstance:
     - target: {fileID: 4018130283854854008, guid: da31e0366dac3794999b4255bacd7801, type: 3}
       propertyPath: m_Name
       value: PFB_EnemyCube (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471486052064540311, guid: da31e0366dac3794999b4255bacd7801, type: 3}
+      propertyPath: m_Size.y
+      value: 1.9018948
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471486052064540311, guid: da31e0366dac3794999b4255bacd7801, type: 3}
+      propertyPath: m_Center.y
+      value: 0.45094764
       objectReference: {fileID: 0}
     - target: {fileID: 7573624746849914854, guid: da31e0366dac3794999b4255bacd7801, type: 3}
       propertyPath: m_RootOrder
