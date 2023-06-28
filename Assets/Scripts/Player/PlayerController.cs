@@ -88,7 +88,7 @@ public class PlayerController : Singleton<PlayerController>
 
     public void Update()
     {
-        if (!_canRun) return;
+        if (!_canRun || target == null) return;
 
         _pos = target.position;
         _pos.y = transform.position.y;
@@ -111,6 +111,8 @@ public class PlayerController : Singleton<PlayerController>
                 if (collision.transform.GetComponent<LaserEnemy>() != null)
                 {
                     EndGame(AnimatorManager.AnimationType.DEAD);
+                    if (vfxDeath != null) vfxDeath.Play();
+                    loseAudio.Play();
                 }
                 else
                 {
